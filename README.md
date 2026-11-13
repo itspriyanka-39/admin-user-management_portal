@@ -70,13 +70,13 @@ A simple Admin Management Panel built using React. This application allows admin
 1. Clone the repository:
 
    ```bash
-   git clone YOUR_GITHUB_REPOSITORY_LINK
+   git git clone https://github.com/itspriyanka-39/Admin-Portal.git
    ```
 
 2. Navigate to the project folder:
 
    ```bash
-   cd admin-management-portal
+   cd Admin-management
    ```
 
 3. Install dependencies:
