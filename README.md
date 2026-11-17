@@ -1,57 +1,30 @@
-# Admin Management Panel
+# Admin and User Management Portal
 
-A simple Admin Management Panel built using React. This application allows administrators to manage users, monitor dashboard statistics, and handle support requests.
+## Project Overview
+
+This project is a React-based Admin and User Management Portal developed as part of Assignment 2 and Assignment 3.
+
+It allows administrators to manage users and support requests, while users can manage their profiles and submit support requests.
 
 ## Features
 
-### 1. Admin Login
-- Secure login page with dummy credentials.
-- Email and password validation.
-- Error messages for invalid login attempts.
+**Admin Panel**
+- Admin Login with validation.
+- Dashboard displaying total users, active users, inactive users and support request statistics.
+- Add, edit and delete users.
+- Search and filter users.
+- View and manage support requests.
+- Update support request status.
 
-### 2. Admin Dashboard
-- Total users count.
-- Active and inactive users count.
-- Total support requests.
-- Pending, In Progress, and Resolved request counts.
-
-### 3. User Management
-- View all users in a table.
-- Add new users.
-- Edit existing user details.
-- Delete users with confirmation.
-- Search users by name.
-- Filter users by Active and Inactive status.
-
-### 4. Support Request Management
-- View all support requests.
-- View individual request details.
-- Update request status.
-- Search requests by subject or user name.
-- Filter requests by status.
-- Reflect updated request statuses in the corresponding User Panel.
-
-### 5. User Panel
-- View user profile information.
-- View support requests associated with the logged-in user.
-- Check updated request statuses.
-
-### 6. Validation and Error Handling
-- Required field validation.
-- Email format validation.
-- Duplicate email prevention.
-- Confirmation before deleting users.
-- Success and error messages.
-
-## Technologies Used
-
-- React.js
-- JavaScript
-- HTML5
-- CSS3
-- React Router DOM
-- Lucide React
-- Browser LocalStorage
+**User Panel**
+- User Login and Registration.
+- User Dashboard with personal information and request statistics.
+- View and edit profile details.
+- Change password with validation.
+- Submit new support requests.
+- View personal support requests.
+- Track request status (Pending, In Progress, Resolved).
+- Edit pending support requests.
 
 ## Demo Login Credentials
 
@@ -70,13 +43,13 @@ A simple Admin Management Panel built using React. This application allows admin
 1. Clone the repository:
 
    ```bash
-   git git clone https://github.com/itspriyanka-39/Admin-Portal.git
+   git clone https://github.com/itspriyanka-39/admin-user-management_portal.git
    ```
 
 2. Navigate to the project folder:
 
    ```bash
-   cd Admin-management
+   cd admin-management-portal
    ```
 
 3. Install dependencies:
@@ -93,11 +66,24 @@ A simple Admin Management Panel built using React. This application allows admin
 
 5. Open the local URL displayed in the terminal.
 
+## Technologies Used
+
+- React.js
+- JavaScript
+- React Router DOM
+- Context API
+- HTML
+- CSS
+- Lucide React
+- LocalStorage
+
 ## Data Storage
 
-The application uses browser LocalStorage to persist user and support request data across page refreshes.
+The application uses browser LocalStorage to persist user information and support requests across page refreshes.
 
-**Note:** This is a frontend demonstration project. It does not use a backend server or database.
+Admin and User panels share the same application data, so changes made by either panel are reflected in the other.
+
+**Note:** This is a frontend demonstration project. It does not use a backend server or database. LocalStorage is not secure authentication.
 
 ## Project Structure
 
@@ -106,7 +92,8 @@ src/
 ├── components/
 │   ├── sidebar.jsx
 │   ├── navbar.jsx
-│   └── statCard.jsx
+│   ├── statCard.jsx
+│   └── userSidebar.jsx
 ├── context/
 │   └── AppContext.jsx
 ├── pages/
@@ -114,11 +101,19 @@ src/
 │   ├── users.jsx
 │   ├── supportRequests.jsx
 │   ├── login.jsx
-│   └── userPanel.jsx
+│   ├── register.jsx
+│   ├── userPanel.jsx
+│   ├── myProfile.jsx
+│   └── supportCenter.jsx
 ├── App.jsx
 ├── main.jsx
 ├── App.css
 └── index.css
 ```
-Total Time Spent: Approximately 10 hours
 
+## Assignments
+
+- Assignment 2: Admin Management Panel
+- Assignment 3: User Management Panel
+
+**Total Time Spent:** Approximately 15 hours
