@@ -3,7 +3,6 @@ import { createContext, useContext, useState, useEffect } from 'react';
 
 const AppContext = createContext();
 
-// LocalStorage se data read karne ke liye
 function getStoredData(key, defaultData) {
   try {
     const savedData = localStorage.getItem(key);
@@ -64,12 +63,11 @@ export function AppProvider({ children }) {
     ])
   );
 
-  // Users mein changes LocalStorage mein save karna
+
   useEffect(() => {
     localStorage.setItem('adminUsers', JSON.stringify(users));
   }, [users]);
 
-  // Support requests mein changes LocalStorage mein save karna
   useEffect(() => {
     localStorage.setItem('supportRequests', JSON.stringify(requests));
   }, [requests]);

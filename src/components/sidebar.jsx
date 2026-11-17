@@ -17,12 +17,12 @@ function Sidebar() {
     if (confirmed) {
       sessionStorage.clear();
       navigate('/login');
+      window.location.reload();
     }
   }
 
   return (
     <aside className="sidebar">
-
       <div className="sidebar-logo">
         <div className="logo-icon">
           <ShieldCheck size={24} />
@@ -58,7 +58,6 @@ function Sidebar() {
           <span>Logout</span>
         </button>
       </div>
-
     </aside>
   );
 }

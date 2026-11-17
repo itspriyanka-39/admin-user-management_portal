@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { useAppContext } from '../context/AppContext';
 
 function Login() {
@@ -35,45 +35,32 @@ function Login() {
       return;
     }
 
-    // Assignment's default User Login
-    if (
-      cleanEmail === 'user@gmail.com' &&
-      password === 'User@123'
-    ) {
-      sessionStorage.clear();
-      sessionStorage.setItem('isLoggedIn', 'true');
-      sessionStorage.setItem('userRole', 'user');
-      sessionStorage.setItem('userId', '1');
-
-      setError('');
-      navigate('/user-panel');
-      return;
-    }
-
-    // Dynamic User Login
+    // Find the actual registered user
     const currentUser = users.find(
       user =>
-        user.email.toLowerCase() === cleanEmail &&
+        user.email?.trim().toLowerCase() === cleanEmail &&
         user.password === password
     );
 
-    if (currentUser) {
-      if (currentUser.status !== 'Active') {
-        setError('Your account is inactive. Please contact Admin.');
-        return;
-      }
-
-      sessionStorage.clear();
-      sessionStorage.setItem('isLoggedIn', 'true');
-      sessionStorage.setItem('userRole', 'user');
-      sessionStorage.setItem('userId', String(currentUser.id));
-
-      setError('');
-      navigate('/user-panel');
+    if (!currentUser) {
+      setError('Invalid email or password.');
       return;
     }
 
-    setError('Invalid email or password.');
+    // Check account status
+    if (currentUser.status !== 'Active') {
+      setError('Your account is inactive. Please contact Admin.');
+      return;
+    }
+
+    // Save actual logged-in user's ID
+    sessionStorage.clear();
+    sessionStorage.setItem('isLoggedIn', 'true');
+    sessionStorage.setItem('userRole', 'user');
+    sessionStorage.setItem('userId', String(currentUser.id));
+
+    setError('');
+    navigate('/user-panel');
   }
 
   return (
@@ -103,6 +90,10 @@ function Login() {
         {error && <p className="login-error">{error}</p>}
 
         <button type="submit">Login</button>
+
+        <p className="register-login-link">
+          Don't have an account? <Link to="/register">Register</Link>
+        </p>
       </form>
     </div>
   );
